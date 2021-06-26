@@ -1,0 +1,46 @@
+{% extends 'empman/base.html' %}
+
+{% block content %}
+<p></p>
+<center>
+<div class="col-sm-3">
+    <h4 class="alert alert-info">Add new Company</h4>
+    <form class="form-control" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <p></p>
+    <input type="submit" class="btn btn-warning" value="ADD" id="add">
+</form>
+</div>
+<div class="col-sm-10">
+    <p></p>
+    <h4 class="alert alert-info">Here is the list of companies</h4>
+    <table class="table table-hover">
+        <th class="thead-dark">
+        <tr>
+            <th scope="col">Sr</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Operations</th>
+        </tr> 
+        </th> 
+        <tbody>
+          {% for comps in comp %}  
+          <tr>
+            <th scope="col">{{comps.id}}</th>
+            <th scope="col">{{comps.company_name}}</th>
+            <th scope="col">{{comps.company_created}}</th>
+            <td>
+                <a href="#" class="btn btn-success btn-sm">View</a>
+                <a href="{% url 'editcomp' comps.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <form action="{% url 'deletecomp' comps.id %}" method="POST" class="d-inline">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+</div>
+</center>
+{% endblock content %}
