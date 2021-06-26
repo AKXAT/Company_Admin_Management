@@ -28,10 +28,10 @@
           {% for comps in comp %}  
           <tr>
             <th scope="col">{{comps.id}}</th>
-            <th scope="col">{{comps.company_name}}</th>
+            <th scope="col"><a href="{% url 'showemp' comps.id %}">{{comps.company_name}}</a></th>
             <th scope="col">{{comps.company_created}}</th>
             <td>
-                <a href="#" class="btn btn-success btn-sm">View</a>
+                <!-- <a href="{% url 'showemp' comps.id %}" class="btn btn-success btn-sm">View</a> -->
                 <a href="{% url 'editcomp' comps.id %}" class="btn btn-warning btn-sm">Edit</a>
                 <form action="{% url 'deletecomp' comps.id %}" method="POST" class="d-inline">
                     {% csrf_token %}

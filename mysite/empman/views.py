@@ -32,3 +32,25 @@ def deleteCompany(request,id):
         dele=companyModel.objects.get(pk=id)
         dele.delete()
         return HttpResponsePermanentRedirect('/')
+
+
+# def viewEmployee(request,id):
+#     print(id)
+#     return render(request,'empman/employeeshow.html')
+
+def viewEmployee(request,id):
+    company = companyModel.objects.get(id=id)
+    employees = company.employeemodel_set.all() #employess of that company
+    return render(request,'empman/employeeshow.html', {'company':company, 'showemps':employees})
+
+def employeeShowView(request):
+    if request.method == 'POST':
+        empform = employeeForm(request.POST)
+        if empform.is_valid():
+            empform.save()
+            
+    else:
+        emp = employeeForm()
+    
+    emp = employeeModel.objects.all()
+    return render(request,'empman/employeeshow.html',{'empform':empform,'emp':emp})
