@@ -14,4 +14,14 @@ class companyForm(forms.ModelForm):
 class employeeForm(forms.ModelForm):    
     class Meta:
         model = employeeModel
-        fields = ['employee_company_name','employee_name','employee_created']
+        fields = ['employee_company_name','employee_name','employee_created'] 
+        
+        widgets = {
+            'employee_company_name' : forms.TextInput(attrs={'class':'form-control '}),
+            'employee_company_name': forms.HiddenInput,
+            'employee_name':forms.TextInput(attrs={'class':'form-control'}),
+            'employee_created':forms.TextInput(attrs={'class':'form-control'})
+        }  
+
+
+        

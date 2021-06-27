@@ -8,7 +8,7 @@ def companyShowView(request):
         form = companyForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponsePermanentRedirect('/')
+            form = companyForm()
     else:
         form = companyForm()
     
@@ -39,18 +39,32 @@ def deleteCompany(request,id):
 #     return render(request,'empman/employeeshow.html')
 
 def viewEmployee(request,id):
+    initial = {'employee_company_name': id}
+    if request.method == 'POST':
+        fm = employeeForm(request.POST)
+        if fm.is_valid():
+            fm.save()
+    else:
+        fm = employeeForm(initial=initial)
     company = companyModel.objects.get(id=id)
     employees = company.employeemodel_set.all() #employess of that company
-    return render(request,'empman/employeeshow.html', {'company':company, 'showemps':employees})
+    return render(request,'empman/employeeshow.html', {'fm':fm,'company':company, 'showemps':employees})
 
-def employeeShowView(request):
+
+def deleteEmployee(request,id):
     if request.method == 'POST':
-        empform = employeeForm(request.POST)
-        if empform.is_valid():
-            empform.save()
-            
+        dele=employeeModel.objects.get(pk=id)
+        dele.delete()
+        return HttpResponsePermanentRedirect('/')
+
+def editEmployee(request,id):
+    if request.method == 'POST':
+        uniqueid = employeeModel.objects.get(pk=id)
+        requestpost = employeeForm(request.POST,instance=uniqueid)
+        if requestpost.is_valid():
+            requestpost.save()
+            return HttpResponsePermanentRedirect('/')
     else:
-        emp = employeeForm()
-    
-    emp = employeeModel.objects.all()
-    return render(request,'empman/employeeshow.html',{'empform':empform,'emp':emp})
+        uniqueid = employeeModel.objects.get(pk=id)
+        requestpost = employeeForm(instance=uniqueid)
+    return render(request,'empman/employeeupdate.html',{'eform':requestpost})

@@ -23,5 +23,7 @@ urlpatterns = [
     path('',views.companyShowView,name='index'),
     path('delete/<int:id>',views.deleteCompany,name='deletecomp'),
     path('<int:id>/edit',views.editCompany,name='editcomp'),
-    path('<int:id>/employee/',views.viewEmployee,name='showemp')
+    path('<int:id>/employee/',views.viewEmployee,name='showemp'),
+    path('employee/delete/<int:id>',views.deleteEmployee,name='deleteemp'),
+    path('<int:id>/employee/edit',views.editEmployee,name='editemp'),
 ]
