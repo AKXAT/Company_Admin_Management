@@ -26,4 +26,7 @@ urlpatterns = [
     path('<int:id>/employee/',views.viewEmployee,name='showemp'),
     path('employee/delete/<int:id>',views.deleteEmployee,name='deleteemp'),
     path('<int:id>/employee/edit',views.editEmployee,name='editemp'),
+    path('createpdf/<int:pk>/',views.downloadPdf,name='downloadPdf'),
 ]
+
+

@@ -1,7 +1,12 @@
 from django import forms
-from django.shortcuts import render,HttpResponsePermanentRedirect
+from django.shortcuts import render,HttpResponsePermanentRedirect,HttpResponse
 from empman.forms import companyForm,employeeForm
 from empman.models import companyModel,employeeModel
+from xhtml2pdf import pisa
+from io import BytesIO
+from django.template.loader import get_template
+import os
+
 # Create your views here.
 def companyShowView(request):
     if request.method == 'POST':
@@ -68,3 +73,24 @@ def editEmployee(request,id):
         uniqueid = employeeModel.objects.get(pk=id)
         requestpost = employeeForm(instance=uniqueid)
     return render(request,'empman/employeeupdate.html',{'eform':requestpost})
+
+def downloadPdf(request,pk):
+
+        company = companyModel.objects.get(pk=pk)
+        employees = company.employeemodel_set.all() #employess of that company
+        template_path = 'empman/pdfreport.html'
+        context = {'employees': employees}
+        # Create a Django response object, and specify content_type as pdf
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'filename="report.pdf"'
+        # find the template and render it.
+        template = get_template(template_path)
+        html = template.render(context) 
+
+        # create a pdf
+        pisa_status = pisa.CreatePDF(
+        html, dest=response)
+        # if error then show some funy view
+        if pisa_status.err:
+            return HttpResponse('We had some errors <pre>' + html + '</pre>')
+        return response
