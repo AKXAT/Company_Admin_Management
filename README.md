@@ -5,6 +5,21 @@
 - Users can access each company model and add new employees , delete employees and edit the employee details
 - At last users can also download the PDF of each company employee list and save it
 
+
+# Here are Screenshots from the 
+
+## Company Home Page
+![1](ScreenShots\1.png)
+
+## Employee of each company
+![2](ScreenShots\2.png)
+
+## Add New Employee 
+![3](ScreenShots\3.png)
+
+## Download the PDF
+![4](ScreenShots\4.png)
+
 ## Setps to setup an initail Djanog Project
 
 
