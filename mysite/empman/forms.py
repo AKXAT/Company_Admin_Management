@@ -22,6 +22,6 @@ class employeeForm(forms.ModelForm):
             'employee_name':forms.TextInput(attrs={'class':'form-control'}),#bootstrap class
             'employee_created':forms.TextInput(attrs={'class':'form-control','placeholder':'YYYY-MM-DD'})#bootstrap class
         }  
-
+    
 
         
