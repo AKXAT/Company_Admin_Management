@@ -1,5 +1,7 @@
 # Company Employee Management tool 
 
+Hosted on Heroku - http://djangocomp.herokuapp.com/ -> Please wait for sometime , it may take a while to load the site
+
 ## This is an Django based Company-Employee tool which helps for management of various Companies and their employees data. 
 - You have the ability to add new company , delete old company and edit the details of each company
 - Users can access each company model and add new employees , delete employees and edit the employee details
@@ -9,16 +11,16 @@
 # Here are Screenshots from the 
 
 ## Company Home Page
-![1](ScreenShots\1.png)
+![1](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/1.png)
 
 ## Employee of each company
-![2](ScreenShots\2.png)
+![2](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/2.png)
 
 ## Add New Employee 
-![3](ScreenShots\3.png)
+![3](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/3.png)
 
 ## Download the PDF
-![4](ScreenShots\4.png)
+![4](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/4.pngg)
 
 ## Setps to setup an initail Djanog Project
 
