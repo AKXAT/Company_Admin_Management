@@ -20,7 +20,7 @@ Hosted on Heroku - http://djangocomp.herokuapp.com/ -> Please wait for sometime 
 ![3](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/3.png)
 
 ## Download the PDF
-![4](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/4.pngg)
+![4](https://github.com/AKXAT/Company_Admin_Management/blob/main/ScreenShots/4.png)
 
 ## Setps to setup an initail Djanog Project
 
